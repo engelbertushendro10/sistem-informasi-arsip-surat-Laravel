@@ -1,11 +1,11 @@
-# SIM SURAT
+# SISTEM INFORMASI ARSIP SURAT LARAVEL
 Aplikasi Sistem Manajemen Surat Sederhana dengan laravel v5.5. System requirementsnya liat di sini yah https://laravel.com/docs/5.5/#server-requirements
 
 # Konfigurasi
 Setelah download/clone jalankan perintah berikut untuk menginstall dependency composer via command prompt/terminal etc.
 
 ```bash
-cd simsurat
+cd / change direktori ke project yang sudah di download
 php composer.phar install
 ```
 
@@ -14,7 +14,7 @@ Copy file .env.example dengan nama .env dan sesuaikan konfigurasi database anda.
 ```php
 DB_DATABASE=manajemen_surat
 DB_USERNAME=root
-DB_PASSWORD=passwordmysql
+DB_PASSWORD= (password anda)
 ```
 Kemudian jalankan perintah berikut untuk menggenerate key
 ```bash
@@ -35,6 +35,3 @@ Jadi deh ^_^
 
 # Pengguna
 Untuk demo login dengan menggunakan username/password admin/123456 untuk hak akses admin dan user1/123456 untuk hak akses normal
-
-# License
-This project is licensed under the MIT License - see the [License File](LICENSE) for details
