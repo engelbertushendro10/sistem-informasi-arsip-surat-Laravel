@@ -36,9 +36,14 @@ class SuratController extends Controller
                 ->paginate($perPage);
         } else {
             $surat = Surat::paginate($perPage);
+            $tipe = Surat::pluck('tipe');
         }
-
-        return view('surat.index', compact('surat'));
+        if($tipe == 'keluar'){
+            return view('suratkeluar.index', compact('surat'));
+        }else {
+            return view('surat.index', compact('surat'));
+        }
+        
     }
 
     /**
@@ -91,7 +96,7 @@ class SuratController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show($id, $tipe)
     {
         $surat = Surat::findOrFail($id);
 

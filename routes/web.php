@@ -11,7 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
+// Route::get'/', function () {
 //     return view('welcome');
 // });
 
@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('jenis-surat', 'JenisSuratController');
     Route::get('surat/laporan', 'SuratController@laporan');
     Route::resource('surat', 'SuratController');
+    Route::resource('suratkeluar', 'suratkeluarController');
     Route::resource('disposisi', 'DisposisiController');
     Route::get('laporan/cetak', 'SuratController@cetak');
     Route::resource('agenda', 'AgendaController');

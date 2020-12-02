@@ -25,7 +25,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'admin/auth.login';
+    protected $redirectTo = 'admin/auth.login' ;
+    // protected $redirectTo :: ('admin/auth.login')->with('alert-error', 'username or password wrong') ;
 
     /**
      * Create a new controller instance.

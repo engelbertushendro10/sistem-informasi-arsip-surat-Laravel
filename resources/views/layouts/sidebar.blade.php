@@ -16,7 +16,11 @@
                 @endif 
                 <li>
                     <a href="{{ url('/surat') }}" class="waves-effect"><i class="fa fa-envelope-o m-r-10"
-                            aria-hidden="true"></i>Surat</a>
+                            aria-hidden="true"></i>Surat Mauk</a>
+                </li>
+                <li>
+                    <a href="{{ url('/suratkeluar') }}" class="waves-effect"><i class="fa fa-envelope-o m-r-10"
+                            aria-hidden="true"></i>Surat Keluar</a>
                 </li>
                 <li>
                     <a href="{{ url('/disposisi') }}" class="waves-effect"><i class="fa fa-tasks m-r-10"
