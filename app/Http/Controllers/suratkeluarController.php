@@ -6,12 +6,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\JenisSurat;
-use App\Surat;
+use App\Suratkeluar;
 use Illuminate\Http\Request;
-use Alert;
+
 use PDF;
 
-class SuratController extends Controller
+class SuratkeluarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,24 +21,24 @@ class SuratController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 10;
+        $perPage = 25;
 
         if (!empty($keyword)) {
-            $surat = Surat::where('no_surat', 'LIKE', "%$keyword%")
+            $surat = Suratkeluar::where('no_surat', 'LIKE', "%$keyword%")
                 ->orWhere('no_agenda', 'LIKE', "%$keyword%")
                 ->orWhere('jenis_surat_id', 'LIKE', "%$keyword%")
                 ->orWhere('tanggal_kirim', 'LIKE', "%$keyword%")
                 ->orWhere('tanggal_terima', 'LIKE', "%$keyword%")
                 ->orWhere('pengirim', 'LIKE', "%$keyword%")
                 ->orWhere('perihal', 'LIKE', "%$keyword%")
-                ->orWhere('tipe', 'LIKE', "%$keyword%")
                 ->orWhere('user_id', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
-        } else {
-            $surat = Surat::paginate($perPage);
+        }else{
+            $surat = Suratkeluar::paginate($perPage);
         }
 
-        return view('surat.index', compact('surat'));
+        return view('suratkeluar.index', compact('surat'));
+
     }
 
     /**
@@ -49,8 +49,7 @@ class SuratController extends Controller
     public function create()
     {
         $jenisSurats = JenisSurat::pluck('name','id');
-       // Alert::success(' TITLE NYA APA ', ' PESAN BERHASIL / ERRORNYA APA');
-        return view('surat.create', compact('jenisSurats'));
+        return view('suratkeluar.create', compact('jenisSurats'));
     }
 
     /**
@@ -72,17 +71,17 @@ class SuratController extends Controller
         ];
 
         if ($request->tipe == 'masuk') {
-            $validation = array_add($validation, 'tanggal_terima', 'required');
+           $validation = array_add($validation, 'tanggal_terima', 'required');
         }
 
         $request->validate($validation);
 
         $requestData = array_add($request->all(), 'user_id', $request->user()->id);
-        $requestData = array_add($requestData, 'no_agenda', Surat::whereTipe($request->tipe)->count()+1);
-        
-        Surat::create($requestData);
+        $requestData = array_add($requestData, 'no_agenda', Suratkeluar::whereTipe($request->tipe)->count()+1);
 
-        return redirect('surat')->with('flash_message', 'Surat added!');
+        Suratkeluar::create($requestData);
+
+        return redirect('suratkeluar')->with('flash_message', 'Surat added!');
     }
 
     /**
@@ -94,9 +93,9 @@ class SuratController extends Controller
      */
     public function show($id)
     {
-        $surat = Surat::findOrFail($id);
+        $surat = Suratkeluar::findOrFail($id);
 
-        return view('surat.index', compact('surat'));
+        return view('suratkeluar.index', compact('surat'));
     }
 
     /**
@@ -108,10 +107,10 @@ class SuratController extends Controller
      */
     public function edit($id)
     {
-        $surat = Surat::findOrFail($id);
+        $surat = Suratkeluar::findOrFail($id);
         $jenisSurats = JenisSurat::pluck('name','id');
 
-        return view('surat.edit', compact('surat','jenisSurats'));
+        return view('suratkeluar.edit', compact('surat','jenisSurats'));
     }
 
     /**
@@ -139,18 +138,18 @@ class SuratController extends Controller
         // }
 
         // $request->validate($validation);
-        
+
         // $requestData = $request->all();
-        
-        // $surat = Surat::findOrFail($id);
+
+        // $surat = Suratkeluar::findOrFail($id);
         // $surat->update($requestData);
 
-        // return redirect()->route('surat')->with('flash_message', 'Surat updated!');
-        $data = \App\Surat::find($id);
+        // return redirect('suratkeluar')->with('flash_message', 'Surat updated!');
+        $data = \App\Suratkeluar::find($id);
 
         $data->update($request->all());
 
-        return redirect()->route('surat.index')->with('success', 'Data berhasil terupdate!');
+        return redirect()->route('suratkeluar.index')->with('success', 'Data berhasil terupdate!');
     }
 
     /**
@@ -162,13 +161,13 @@ class SuratController extends Controller
      */
     public function destroy($id)
     {
-        Surat::destroy($id);
+        Suratkeluar::destroy($id);
 
-        return redirect('surat')->with('flash_message', 'Surat deleted!');
+        return redirect('suratkeluar')->with('flash_message', 'Surat deleted!');
     }
 
     public function laporan (Request $request)
-    {   
+    {
         $from = \Carbon\Carbon::now();
         $to = \Carbon\Carbon::now();
         $tipe = 'masuk';
@@ -178,18 +177,18 @@ class SuratController extends Controller
             $tipe = $request->tipe;
         }
 
-        $surats = Surat::whereTipe($tipe)-> whereDate('created_at', '>=', $from)->whereDate('created_at', '<=', $to)->get();
+        $surats = Suratkeluar::whereTipe($tipe)-> whereDate('created_at', '>=', $from)->whereDate('created_at', '<=', $to)->get();
 
-        return view('surat.laporan', compact('surats','from','to','tipe'));
+        return view('suratkeluar.laporan', compact('surats','from','to','tipe'));
     }
     public function cetak(){
-        $cetak = Surat::all();
+        $cetak = Suratkeluar::all();
         $pdf = PDF::loadview('laporan/laporan',['cetak'=>$cetak]);
     	return $pdf->download('laporan-laporan.pdf', compact('cetak'));
     }
     public function cari(Request $request){
         $surat = $request->get('search');
-        $surat = Surat::where('no_surat','like',"%".$surat."%" )->paginate(10);
-        return view('surat.index',compact('surat'));
+        $surat = Suratkeluar::where('no_surat','like',"%".$surat."%" )->paginate(10);
+        return view('suratkeluar.index',compact('surat'));
     }
 }

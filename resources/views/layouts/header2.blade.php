@@ -32,14 +32,14 @@
                 <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
                         href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                 <li class="nav-item hidden-sm-down">
-                {!! Form::open(['method' => 'GET', 'url' => '/search', 'class' => 'navbar-form navbar-right', 'role' =>'search']) !!}
-                        <div class="app-search p-l-20">  
-                            <input type="text" class="form-control" name="search" placeholder="Search..."
-                                value="{{ request('search') }}">
-                            <span class="input-group-btn">
-                            </span>
-                        </div>
-                {!! Form::close() !!}
+                    {!! Form::open(['method' => 'GET', 'url' => '/searchsk', 'class' => 'navbar-form navbar-right', 'role' =>'search']) !!}
+                    <div class="app-search p-l-20">  
+                        <input type="text" class="form-control" name="search" placeholder="Search..."
+                            value="{{ request('search') }}">
+                        <span class="input-group-btn">
+                        </span>
+                    </div>
+                    {!! Form::close() !!}
                 </li>
             </ul>
             <!-- ============================================================== -->

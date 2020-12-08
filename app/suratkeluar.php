@@ -5,16 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Agenda extends Model
+class Suratkeluar extends Model
 {
-    //use SoftDeletes;
+    use SoftDeletes;
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'agenda_m';
-
+    protected $table = 'suratkeluars';
 
     /**
     * The database primary key value.
@@ -28,15 +27,20 @@ class Agenda extends Model
      *
      * @var array
      */
-    protected $fillable = ['nama_surat', 'no_surat', 'alamat_surat', 'perihal_surat', 'tujuan', 'masuk', 'keluar'];
+    protected $fillable = ['no_surat', 'no_agenda', 'jenis_surat_id', 'tanggal_kirim', 'tanggal_terima', 'pengirim', 'perihal','tipe','user_id'];
 
-    public function surat ()
+    public function jenis_surat ()
     {
-        return $this->belongsTo('App\Surat');
-    }
+        return $this->belongsTo('App\JenisSurat');
+    }    
 
     public function user ()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function disposisis ()
+    {
+        return $this->hasMany('App\Disposisi');
     }
 }

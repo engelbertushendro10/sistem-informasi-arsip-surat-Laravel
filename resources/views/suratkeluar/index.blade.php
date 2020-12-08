@@ -1,4 +1,4 @@
-@extends('layouts.app1')
+@extends('layouts.app2')
 
 @section('content')
 <div class="container">
@@ -12,10 +12,9 @@
                 <a href="{{ url('/surat/create') }}" class="btn btn-success btn-sm" title="Add New Surat">
         <i class="fa fa-plus" aria-hidden="true"></i> Add New
         </a>
-
-        {!! Form::open(['method' => 'GET', 'url' => '/search', 'class' => 'navbar-form navbar-right', 'role' =>
+        {!! Form::open(['method' => 'GET', 'url' => '/surat', 'class' => 'navbar-form navbar-right', 'role' =>
         'search']) !!}
-        <div class="input-group">  
+        <div class="input-group">
             <input type="text" class="form-control" name="search" placeholder="Search..."
                 value="{{ request('search') }}">
             <span class="input-group-btn">
@@ -29,7 +28,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-block">
-                    <a href="{{ url('/surat/create') }}" class="btn btn-success btn-sm" title="Add New Surat">
+                    <a href="{{ url('/suratkeluar/create') }}" class="btn btn-success btn-sm" title="Add New Surat">
                         <i class="fa fa-plus" aria-hidden="true"></i> Add New
                     </a>
                     <div class="table-responsive">
@@ -44,7 +43,6 @@
                                     <th>Tanggal Terima</th>
                                     <th>Pengirim</th>
                                     <th>Perihal</th>
-                                    <!-- <th>Tipe</th> -->
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -59,15 +57,14 @@
                                     <td>{{ $item->tanggal_terima }}</td>
                                     <td>{{ $item->pengirim }}</td>
                                     <td>{{ $item->perihal }}</td>
-                                    <!-- <td>Surat {{ $item->tipe }}</td> -->
                                     <td>
-                                        <a href="{{ url('/surat/' . $item->id . '/edit') }}" title="Edit Surat"><button
+                                        <a href="{{ url('/suratkeluar/' . $item->id . '/edit') }}" title="Edit Surat"><button
                                                 class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o"
                                                     aria-hidden="true"></i>
                                                 Edit</button></a>
                                         {!! Form::open([
                                         'method'=>'DELETE',
-                                        'url' => ['/surat', $item->id],
+                                        'url' => ['/suratkeluar', $item->id],
                                         'style' => 'display:inline'
                                         ]) !!}
                                         {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -84,7 +81,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $surat->links() }}
                         <div class="pagination-wrapper"> {!! $surat->appends(['search' =>
                             Request::get('search')])->render() !!} </div>
                     </div>

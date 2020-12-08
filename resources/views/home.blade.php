@@ -1,5 +1,4 @@
 @extends('layouts.app1')
-
 @section('content')
 <div class="container">
     <div class="row">
@@ -20,7 +19,6 @@
                             </ol>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -35,13 +33,13 @@
                     <h4 class="card-title">Surat Masuk</h4>
                     <div class="text-right">
                         <h2 class="font-light m-b-0"><i class="ti-arrow-down text-success"></i>
-                            {{$surat_masuk->count()}}</h2>
+                            {{$surat_masuk}}</h2>
                         <span class="text-muted">Total Surat</span>
                     </div>
-                    <span class="text-success">80%</span>
+                    <!-- <span class="text-success">80%</span> -->
                     <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 80%; height: 6px;"
-                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <!-- <div class="progress-bar bg-success" role="progressbar" style="width: 80%; height: 6px;"
+                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
                     </div>
                 </div>
             </div>
@@ -53,13 +51,14 @@
                 <div class="card-block">
                     <h4 class="card-title">Surat Keluar</h4>
                     <div class="text-right">
-                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i></h2>
+                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i>
+                        {{$surat_keluar}}</h2>
                         <span class="text-muted">Total Surat</span>
                     </div>
-                    <span class="text-info">30%</span>
+                    <!-- <span class="text-info">30%</span> -->
                     <div class="progress">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 30%; height: 6px;"
-                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <!-- <div class="progress-bar bg-info" role="progressbar" style="width: 30%; height: 6px;"
+                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
                     </div>
                 </div>
             </div>

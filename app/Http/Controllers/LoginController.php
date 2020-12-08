@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Alert;
 
 class LoginController extends Controller
 {
@@ -25,8 +26,12 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'admin/auth.login' ;
-    // protected $redirectTo :: ('admin/auth.login')->with('alert-error', 'username or password wrong') ;
+    //protected $redirectTo = 'auth.login' ;
+    public function login(){
+        return back()->with('error', 'The error message here!');
+    }
+    //Alert::warning('alert-error', 'username or password wrong') ;
+    //protected $redirectTo = ('admin/auth.login')-> Alert::warning('alert-error', 'username or password wrong') ;
 
     /**
      * Create a new controller instance.

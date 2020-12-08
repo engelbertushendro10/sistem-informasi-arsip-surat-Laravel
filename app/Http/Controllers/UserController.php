@@ -141,4 +141,9 @@ class UserController extends Controller
 
         return redirect('user')->with('flash_message', 'User deleted!');
     }
+        public function cari(Request $request){
+        $user = $request->get('search');
+        $user = User::where('name','like',"%".$user."%" )->paginate(10);
+        return view('user.index',compact('user'));
+    }
 }

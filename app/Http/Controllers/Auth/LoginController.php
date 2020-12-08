@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Alert;
 class LoginController extends Controller
 {
     /*
@@ -26,7 +26,13 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = 'home';
-
+    // public function login(){
+    //     if('password'=='manager'){
+    //         return back()->with('error', 'The error message here!');
+    //     }else{
+    //     return redirect('home')->with('succes', 'The error message here!');
+    //     }
+    // }
     /**
      * Create a new controller instance.
      *

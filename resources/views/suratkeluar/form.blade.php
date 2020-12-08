@@ -10,7 +10,7 @@
     <div class="form-group {{ $errors->has('tipe') ? 'has-error' : ''}}">
         {!! Form::label('tipe', 'Tipe', ['class' => 'col-md-4 control-label']) !!}
         <div class="col-md-6">
-            {!! Form::select('tipe', ['masuk'=>'Surat masuk'], null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control tipe']) !!}
+            {!! Form::select('tipe', ['keluar'=>'Surat keluar'], null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control tipe']) !!}
             {!! $errors->first('tipe', '<p class="help-block">:message</p>') !!}
         </div>
     </div>

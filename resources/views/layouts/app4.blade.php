@@ -35,7 +35,7 @@
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
     </div>
     <div id="main-wrapper">
-        @include('layouts.header')
+        @include('layouts.header4')
         @include('layouts.sidebar')
         <div class="page-wrapper">
             <div class="container-fluid">
@@ -45,7 +45,9 @@
         @include('layouts.footer')
     </div>
     </div>
-
+    
+    <script src="/pathto/js/sweetalert.js"></script>
+<!-- @include('sweet::alert') -->
     <script src="{{@url('monster/assets/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{@url('monster/assets/plugins/bootstrap/js/tether.min.js')}}"></script>
     <script src="{{@url('monster/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>

@@ -7,21 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style type="text/css">
-h1 {
-  /* h1 elements always start on the top of a new page. */
-  page-break-before: always;
-}
+        table tr td,
+        table tr th {
+            font-size: 9pt;
+        }
 
-section.city-map {
-  /* this section always occupies it's own page or pages. */
-  page-break-before: always;
-  page-break-after: always;
-}
-
-table {
-  /* tables don't split across pages if possible. */
-  page-break-inside: avoid;
-}
+        h1 {
+            font-size: 12pt;
+        }
     </style>
 
 </head>
@@ -30,15 +23,15 @@ table {
 
     <center>
         {{-- <img src="{{@url('monster/assets/images/fav-dlhk.png')}}" alt="" srcset=""> --}}
-        <h1>Laporan Surat Masuk</h1>
+        <h1>Laporan Surat Keluar</h1>
         <h1>Dinas Kehutanana Dan Lingkungan Hidup</h1>
         <h1>Provinsi Bali</h1>
     </center>
     <br>
     <br>
-    <table>
+    <table style="border: 1px solid">
         <thead>
-            <tr>
+            <tr style="border: 1px solid">
                 <th>No</th>
                 <th>No. Surat</th>
                 <th>No. Agenda</th>

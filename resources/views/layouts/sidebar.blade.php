@@ -16,7 +16,7 @@
                 @endif 
                 <li>
                     <a href="{{ url('/surat') }}" class="waves-effect"><i class="fa fa-envelope-o m-r-10"
-                            aria-hidden="true"></i>Surat Mauk</a>
+                            aria-hidden="true"></i>Surat Masuk</a>
                 </li>
                 <li>
                     <a href="{{ url('/suratkeluar') }}" class="waves-effect"><i class="fa fa-envelope-o m-r-10"
@@ -26,14 +26,25 @@
                     <a href="{{ url('/disposisi') }}" class="waves-effect"><i class="fa fa-tasks m-r-10"
                             aria-hidden="true"></i>Disposisi</a>
                 </li>
-                <!-- <li>
-                    <a href="{{ url('/disposisi') }}" class="waves-effect"><i class="fa fa-calendar m-r-10"
+                <li>
+                    <a href="{{ url('/agenda') }}" class="waves-effect"><i class="fa fa-calendar m-r-10"
                             aria-hidden="true"></i>Agenda</a>
-                </li> -->
+                </li>
+                
+                <li>
+                <a href="#laporan" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-paste m-r-10"
+                            aria-hidden="true"></i>Laporan</a>
+                <ul class="collapse list-unstyled" id="laporan">
                 <li>
                     <a href="{{ url('/surat/laporan') }}" class="waves-effect"><i class="fa fa-paste m-r-10"
-                            aria-hidden="true"></i>Laporan</a>
+                            aria-hidden="true"></i>Surat Masuk</a>
                 </li>
+                <li>
+                <a href="{{ url('/suratkeluar/laporan') }}" class="waves-effect"><i class="fa fa-paste m-r-10"
+                            aria-hidden="true"></i>Surat Keluar</a>
+                </li>
+                </ul>
+            </li>
 
             </ul>
         </nav>

@@ -10,11 +10,11 @@
             <div class="card">
                 <div class="card-block">
                     <div class="panel panel-default">
-                        {{-- <div class="panel-heading"><a href="{{ url('/surat') }}" title="Back"><button
+                        {{-- <div class="panel-heading"><a href="{{ url('/suratkeluar') }}" title="Back"><button
                             class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                            Back</button></a> Laporan Surat Masuk/Keluar</div> --}}
+                            Back</button></a> Laporan Surat Keluar</div> --}}
                     <div class="panel-body">
-                        {!! Form::open(['url' => 'surat/laporan','method' => 'get','class' => 'form-inline']) !!}
+                        {!! Form::open(['url' => 'suratkeluar/laporan','method' => 'get','class' => 'form-inline']) !!}
                         <div class="form-group">
                             <label for="" class="control-label">Dari </label>
                             {!! Form::date('from', $from, ['class'=>'form-control input-sm']) !!}
@@ -25,13 +25,13 @@
                         </div>
                         <div class="form-group">
                             <label for="" class="control-label">Surat </label>
-                            {!! Form::select('tipe', ['masuk' => 'Surat masuk'], $tipe,
+                            {!! Form::select('tipe', ['keluar' => 'Surat keluar'], $tipe,
                             ['class' =>
                             'form-control input-sm']) !!}
                         </div>
                         <button type="submit" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i>
                             Tampilkan</button>
-                        <a href="/laporan/cetak" class="btn btn-outline-info btn-sm" target="_blank"> <i
+                        <a href="/laporansk/cetak" class="btn btn-outline-info btn-sm" target="_blank"> <i
                                 class="fa fa-print"></i>
                             Cetak</a>
                         {{-- <button type="button" class="btn btn-default btn-sm cetak"><i class="fa fa-print"></i>

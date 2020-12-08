@@ -7,9 +7,9 @@
 
         {{-- <div class="col-md-9"> --}}
         {{-- <div class="panel panel-default">
-            <div class="panel-heading">Surat</div>
+            <div class="panel-heading">agenda</div>
             <div class="panel-body">
-                <a href="{{ url('/surat/create') }}" class="btn btn-success btn-sm" title="Add New Surat">
+                <a href="{{ url('/agenda/create') }}" class="btn btn-success btn-sm" title="Add New Surat">
         <i class="fa fa-plus" aria-hidden="true"></i> Add New
         </a>
 
@@ -29,7 +29,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-block">
-                    <a href="{{ url('/surat/create') }}" class="btn btn-success btn-sm" title="Add New Surat">
+                    <a href="{{ url('/agenda/create') }}" class="btn btn-success btn-sm" title="Add New Surat">
                         <i class="fa fa-plus" aria-hidden="true"></i> Add New
                     </a>
                     <div class="table-responsive">
@@ -37,37 +37,35 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Nama Surat</th>
                                     <th>No Surat</th>
-                                    <th>No Agenda</th>
-                                    <th>Jenis Surat</th>
-                                    <th>Tanggal Kirim</th>
-                                    <th>Tanggal Terima</th>
-                                    <th>Pengirim</th>
+                                    <th>Alamat </th>
                                     <th>Perihal</th>
-                                    <!-- <th>Tipe</th> -->
+                                    <th>Tujuan</th>
+                                    <th>Tgl Masuk</th>
+                                    <th>Tgl Keluar</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($surat as $item)
+                                @foreach($agenda as $item)
                                 <tr>
                                     <td>{{ $loop->iteration or $item->id }}</td>
+                                    <td>{{ $item->nama_surat }}</td>
                                     <td>{{ $item->no_surat }}</td>
-                                    <td>{{ $item->no_agenda }}</td>
-                                    <td>{{ $item->jenis_surat->name }}</td>
-                                    <td>{{ $item->tanggal_kirim }}</td>
-                                    <td>{{ $item->tanggal_terima }}</td>
-                                    <td>{{ $item->pengirim }}</td>
-                                    <td>{{ $item->perihal }}</td>
-                                    <!-- <td>Surat {{ $item->tipe }}</td> -->
+                                    <td>{{ $item->alamat_surat }}</td>
+                                    <td>{{ $item->perihal_surat }}</td>
+                                    <td>{{ $item->tujuan }}</td>
+                                    <td>{{ $item->masuk }}</td>
+                                    <td>{{ $item->keluar }}</td>
                                     <td>
-                                        <a href="{{ url('/surat/' . $item->id . '/edit') }}" title="Edit Surat"><button
+                                        <a href="{{ url('/agenda/' . $item->id . '/edit') }}" title="Edit agenda"><button
                                                 class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o"
                                                     aria-hidden="true"></i>
                                                 Edit</button></a>
                                         {!! Form::open([
                                         'method'=>'DELETE',
-                                        'url' => ['/surat', $item->id],
+                                        'url' => ['/agenda', $item->id],
                                         'style' => 'display:inline'
                                         ]) !!}
                                         {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -75,7 +73,7 @@
                                         array(
                                         'type' => 'submit',
                                         'class' => 'btn btn-danger btn-xs',
-                                        'title' => 'Delete Surat',
+                                        'title' => 'Delete agenda',
                                         'onclick'=>'return confirm("Confirm delete?")'
                                         )) !!}
                                         {!! Form::close() !!}
@@ -84,8 +82,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $surat->links() }}
-                        <div class="pagination-wrapper"> {!! $surat->appends(['search' =>
+                        {{ $agenda->links() }}
+                        <div class="pagination-wrapper"> {!! $agenda->appends(['search' =>
                             Request::get('search')])->render() !!} </div>
                     </div>
                 </div>

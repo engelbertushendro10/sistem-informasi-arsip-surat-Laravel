@@ -72,7 +72,6 @@ class DisposisiController extends Controller
 
         return redirect('disposisi')->with('flash_message', 'Disposisi added!');
     }
-
     /**
      * Display the specified resource.
      *
@@ -147,5 +146,11 @@ class DisposisiController extends Controller
     {
         return Surat::whereTipe('masuk')->pluck('no_surat','id');
     }
+
+    // public function cari(Request $request){
+    //     $disposisi = $request->get('search');
+    //     $disposisi = disposisi::where('no_disposisi','like',"%".$disposisi."%" )->paginate(10);
+    //     return view('disposisi.index',compact('disposisi'));
+    // }
     
 }
