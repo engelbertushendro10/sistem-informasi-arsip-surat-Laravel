@@ -34,4 +34,4 @@ Kemudian akses http://localhost:8000 via browser kesukaan lo
 Jadi deh ^_^
 
 # Pengguna
-Untuk demo login dengan menggunakan username/password admin/123456 untuk hak akses admin dan user1/123456 untuk hak akses normal
+Untuk demo login dengan menggunakan username:manager password:manager
